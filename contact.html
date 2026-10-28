@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên Hệ - My Website</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* CSS bổ sung riêng cho form liên hệ */
+        .contact-form {
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .contact-form label {
+            font-weight: bold;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .contact-form textarea {
+            resize: vertical;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Thanh điều hướng -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Trang Chủ</a></li>
+                <li><a href="about.html">Giới Thiệu</a></li>
+                <li><a href="contact.html">Liên Hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Nội dung trang Liên hệ -->
+    <main>
+        <h1>Liên Hệ Với Tôi</h1>
+        <p>Bạn có góp ý hoặc thắc mắc? Hãy để lại lời nhắn nhé!</p>
+        
+        <form class="contact-form" id="contactForm">
+            <div>
+                <label for="name">Họ và tên:</label>
+                <input type="text" id="name" placeholder="Nhập tên của bạn..." required>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Nhập email của bạn..." required>
+            </div>
+            <div>
+                <label for="messageBox">Lời nhắn:</label>
+                <textarea id="messageBox" placeholder="Nhập nội dung..." required></textarea>
+            </div>
+            <button type="submit">Gửi Lời Nhắn</button>
+        </form>
+        <p id="formResponse" style="margin-top: 15px; font-weight: bold;"></p>
+    </main>
+
+    <!-- Nhúng file JS chính và đoạn code xử lý riêng cho form -->
+    <script src="js/main.js"></script>
+    <script>
+        // Xử lý sự kiện khi bấm nút gửi form liên hệ
+        document.getElementById("contactForm").addEventListener("submit", function(e) {
+            e.preventDefault(); // Chặn việc load lại trang mặc định của form
+            const name = document.getElementById("name").value;
+            const responseP = document.getElementById("formResponse");
+            
+            responseP.textContent = `Cảm ơn bạn ${name}! Lời nhắn của bạn đã được ghi nhận 🎉`;
+            responseP.style.color = "green";
+            
+            // Reset form sau khi gửi
+            this.reset();
+        });
+    </script>
+</body>
+</html>
